@@ -1,0 +1,73 @@
+panic(cpu 2 caller 0xffffff801109189b): userspace watchdog timeout: no successful checkins from logd (2 induced crashes) in 120 seconds
+service returned not alive with context : unresponsive dispatch queue(s): com.apple.firehose.io-wl 
+logd has not exited since first loaded
+service: logd (2 induced crashes), total successful checkins in 5421 seconds: 524, last successful checkin: 120 seconds ago
+service: WindowServer (2 induced crashes), total successful checkins in 5310 seconds: 519, last successful checkin: 120 seconds ago
+service: opendirectoryd, total successful checkins in 5421 seconds: 535, last successful checkin: 0 seconds ago
+service: configd, total successful checkins in 5421 seconds: 536, last successful checkin: 0 seconds ago
+
+Panicked task 0xffffff86fc14d008: 4 threads: pid 108: watchdogd
+Backtrace (CPU 2), panicked thread: 0xffffff86fc10ab30, Frame : Return Address
+0xfffffff420d97510 : 0xffffff800e436c41 mach_kernel : _handle_debugger_trap + 0x4b1
+0xfffffff420d97560 : 0xffffff800e5955c0 mach_kernel : _kdp_i386_trap + 0x110
+0xfffffff420d975a0 : 0xffffff800e584d0c mach_kernel : _kernel_trap + 0x55c
+0xfffffff420d97620 : 0xffffff800e3d3971 mach_kernel : _return_from_trap + 0xc1
+0xfffffff420d97640 : 0xffffff800e436f2d mach_kernel : _DebuggerTrapWithState + 0x5d
+0xfffffff420d97730 : 0xffffff800e4365d3 mach_kernel : _panic_trap_to_debugger + 0x1e3
+0xfffffff420d97790 : 0xffffff800ebd8e6e mach_kernel : _panic_with_options + 0x89
+0xfffffff420d97880 : 0xffffff801109189b com.apple.driver.watchdog : __ZN10IOWatchdog14userspacePanicEP8OSObjectPvP25IOExternalMethodArguments.cold.1 + 0x27
+0xfffffff420d97890 : 0xffffff8011091364 com.apple.driver.watchdog : __ZN10IOWatchdog14userspacePanicEP8OSObjectPvP25IOExternalMethodArguments + 0x2e
+0xfffffff420d978b0 : 0xffffff801109042b com.apple.driver.watchdog : __ZN20IOWatchdogUserClient14externalMethodEjP25IOExternalMethodArgumentsP24IOExternalMethodDispatchP8OSObjectPv + 0x83
+0xfffffff420d979e0 : 0xffffff800eb4e4d6 mach_kernel : __ZN12IOUserClient18callExternalMethodEjP25IOExternalMethodArguments + 0x86
+0xfffffff420d97a10 : 0xffffff800eb4e84d mach_kernel : _is_io_connect_method + 0x31d
+0xfffffff420d97b80 : 0xffffff800e54077f mach_kernel : _iokit_server_routine + 0x3aef
+0xfffffff420d97ca0 : 0xffffff800e40f8a0 mach_kernel : _ipc_kmsg_send + 0x570
+0xfffffff420d97d60 : 0xffffff800e4276b8 mach_kernel : _mach_msg_overwrite_trap + 0x5d8
+0xfffffff420d97dd0 : 0xffffff800e427d28 mach_kernel : _mach_msg2_trap + 0x3b8
+0xfffffff420d97ef0 : 0xffffff800e56a302 mach_kernel : _mach_call_munger64 + 0x1f2
+0xfffffff420d97fa0 : 0xffffff800e3d3dd6 mach_kernel : _hndl_mach_scall64 + 0x16
+      Kernel Extensions in backtrace:
+         com.apple.driver.watchdog(1.0)[F1797B78-7645-3FC6-AD29-624DD0826DA0]@0xffffff801108f000->0xffffff8011091fff
+
+Process name corresponding to current thread (0xffffff86fc10ab30): watchdogd
+Boot args: keepsyms=1 debug=0x100 ipc_control_port_options=0 -nokcmismatchpanic amfi=0x80
+
+Mac OS version:
+23D60
+
+Kernel version:
+Darwin Kernel Version 23.3.0: Wed Dec 20 21:28:58 PST 2023; root:xnu-10002.81.5~7/RELEASE_X86_64
+Kernel UUID: 8C96896D-43A3-3BF0-8F4C-4118DA6AC9AA
+roots installed: 0
+KernelCache slide: 0x000000000e000000
+KernelCache base:  0xffffff800e200000
+Kernel slide:      0x000000000e0e0000
+Kernel text base:  0xffffff800e2e0000
+__HIB  text base: 0xffffff800e100000
+System model name: iMac14,2 (Mac-27ADBB7B4CEE8E61)
+System shutdown begun: NO
+Panic diags file available: YES (0x0)
+Hibernation exit count: 0
+
+System uptime in nanoseconds: 5421178170843
+Last Sleep:           absolute           base_tsc          base_nano
+  Uptime  : 0x000004ee376630ed
+  Sleep   : 0x0000000000000000 0x0000000000000000 0x0000000000000000
+  Wake    : 0x0000000000000000 0x00000010b2ddb0f1 0x0000000000000000
+Compressor Info: 0% of compressed pages limit (OK) and 0% of segments limit (OK) with 0 swapfiles and OK swap space
+Zone info:
+  Zone map: 0xffffff8092cf5000 - 0xffffffa092cf5000
+  . PGZ   : 0xffffff8092cf5000 - 0xffffff8095cf6000
+  . VM    : 0xffffff8095cf6000 - 0xffffff856228f000
+  . RO    : 0xffffff856228f000 - 0xffffff86fb9c2000
+  . GEN0  : 0xffffff86fb9c2000 - 0xffffff8bc7f5b000
+  . GEN1  : 0xffffff8bc7f5b000 - 0xffffff90944f4000
+  . GEN2  : 0xffffff90944f4000 - 0xffffff9560a8d000
+  . GEN3  : 0xffffff9560a8d000 - 0xffffff9a2d027000
+  . DATA  : 0xffffff9a2d027000 - 0xffffffa092cf5000
+  Metadata: 0xffffff804de3d000 - 0xffffff806de3d000
+  Bitmaps : 0xffffff806de3d000 - 0xffffff807263d000
+  Extra   : 0 - 0
+
+
+
